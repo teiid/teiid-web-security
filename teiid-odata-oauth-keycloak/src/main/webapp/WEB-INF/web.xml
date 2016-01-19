@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns="http://java.sun.com/xml/ns/javaee" 
+    xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
+    version="2.5">
+
+    <display-name>odata4</display-name>
+    
+    <listener>
+        <listener-class>org.teiid.oauth.keycloak.Bootstrap</listener-class>
+    </listener>
+    
+    <filter>
+       <filter-name>AuthFilter</filter-name>
+       <filter-class>org.teiid.oauth.keycloak.AuthFilter</filter-class>
+    </filter>
+
+    <filter>
+       <filter-name>ODataFilter</filter-name>
+       <filter-class>org.teiid.olingo.web.ODataFilter</filter-class>
+       <!-- 
+        In cloud environment or if under a proxy, update the below url with address of the proxy to generate 
+        odata links correctly.       
+       <init-param>
+            <param-name>proxy-base-uri</param-name>
+            <param-value>http://{host}</param-value>
+       </init-param>
+       -->
+       
+       <!-- 
+       When using in context per VDB use these values to define the VDB name and version
+       <init-param>
+            <param-name>vdb-name</param-name>
+            <param-value>vdbname</param-value>
+       </init-param>
+       <init-param>
+            <param-name>vdb-version</param-name>
+            <param-value>version</param-value>
+       </init-param>                     
+        -->       
+       
+       <init-param>
+            <param-name>batch-size</param-name>
+            <param-value>256</param-value>       
+       </init-param>
+       <init-param>
+            <param-name>skiptoken-cache-time</param-name>
+            <param-value>300000</param-value>       
+       </init-param>
+       <init-param>
+            <param-name>local-transport-name</param-name>
+            <param-value>odata</param-value>       
+       </init-param>
+       <!-- 
+       <init-param>
+            <param-name>charset</param-name>
+            <param-value>UTF-8</param-value>       
+       </init-param>
+        -->        
+    </filter>
+
+    <filter-mapping>
+       <filter-name>AuthFilter</filter-name>
+       <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <filter-mapping>
+       <filter-name>ODataFilter</filter-name>
+       <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>auth</servlet-name>
+        <servlet-class>org.teiid.oauth.keycloak.AuthServlet</servlet-class>
+    </servlet> 
+             
+    <servlet>
+        <servlet-name>odata4</servlet-name>
+        <servlet-class>org.teiid.olingo.web.ODataServlet</servlet-class>
+    </servlet>     
+    
+    <servlet-mapping>
+        <servlet-name>odata4</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>auth</servlet-name>
+        <url-pattern>/auth</url-pattern>
+        <url-pattern>/token</url-pattern>        
+    </servlet-mapping>    
+
+    <security-role>
+        <description>security role</description>
+        <role-name>odata</role-name>
+    </security-role>
+      
+    <security-constraint>
+        <display-name>Require valid user</display-name>
+        <web-resource-collection>
+            <web-resource-name>Teiid OData Application</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>odata</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <login-config>
+        <auth-method>KEYCLOAK</auth-method>
+        <realm-name>Teiid OData Application</realm-name>
+    </login-config>
+</web-app>

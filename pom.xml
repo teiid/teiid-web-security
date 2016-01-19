@@ -1,0 +1,64 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <name>OData Web Authentication</name>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>odata-web-parent</artifactId>
+    <groupId>org.jboss.teiid</groupId>
+    <packaging>pom</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+
+	<properties>
+	    <version.org.keycloak>1.7.0.Final</version.org.keycloak>
+	    <version.org.jboss.teiid>8.12.5-SNAPSHOT</version.org.jboss.teiid>
+        <apache.httpcomponents.version>4.3.6</apache.httpcomponents.version>
+        <resteasy.version>2.3.7.Final</resteasy.version>
+    </properties>
+    
+	<dependencyManagement>
+		<dependencies>
+	        <dependency>
+	            <groupId>org.jboss.teiid</groupId>
+	            <artifactId>teiid-api</artifactId>
+	            <version>${version.org.jboss.teiid}</version>
+	        </dependency>		
+            <dependency>
+                <groupId>org.jboss.spec.javax.servlet</groupId>
+                <artifactId>jboss-servlet-api_3.0_spec</artifactId>
+                <version>1.0.1.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.keycloak</groupId>
+                <artifactId>keycloak-core</artifactId>
+                <version>${version.org.keycloak}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.keycloak</groupId>
+                <artifactId>keycloak-adapter-core</artifactId>
+                <version>${version.org.keycloak}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.keycloak</groupId>
+                <artifactId>keycloak-servlet-oauth-client</artifactId>
+                <version>${version.org.keycloak}</version>  
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>resteasy-jaxrs</artifactId>
+                <version>${resteasy.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${apache.httpcomponents.version}</version>
+            </dependency>                        
+        </dependencies>
+    </dependencyManagement>    
+    
+    <modules>
+        <module>teiid-odata-oauth-keycloak</module>
+        <module>examples/database-service</module>
+    </modules>
+
+</project>
