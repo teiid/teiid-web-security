@@ -57,7 +57,8 @@
     </dependencyManagement>    
     
     <modules>
-        <module>teiid-odata-oauth-keycloak</module>
+        <module>odata-oauth-keycloak</module>
+        <module>odata-saml-keycloak</module>
         <module>examples/database-service</module>
     </modules>
 
