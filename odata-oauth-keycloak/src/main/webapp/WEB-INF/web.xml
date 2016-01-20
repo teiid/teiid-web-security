@@ -52,6 +52,10 @@
             <param-name>local-transport-name</param-name>
             <param-value>odata</param-value>       
        </init-param>
+       <init-param>
+            <param-name>PassthroughAuthentication</param-name>
+            <param-value>false</param-value>              
+       </init-param>       
        <!-- 
        <init-param>
             <param-name>charset</param-name>

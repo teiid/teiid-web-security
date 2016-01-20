@@ -8,9 +8,9 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>teiid-odata-oauth-keycloak</artifactId>
-    <name>Teiid OData Auth Using Keycloak</name>
-    <description>Teiid OData4 Module with OAuth Security with Keycloak</description>
+    <artifactId>teiid-odata-saml-keycloak</artifactId>
+    <name>Teiid OData SAML Using Keycloak</name>
+    <description>Teiid OData4 Module with SAML Security with Keycloak</description>
     <packaging>war</packaging>
 
     <dependencies>
@@ -32,11 +32,6 @@
         <dependency>
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-adapter-core</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.keycloak</groupId>
-            <artifactId>keycloak-servlet-oauth-client</artifactId>
             <scope>provided</scope>
         </dependency>
     </dependencies>
