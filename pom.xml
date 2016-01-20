@@ -11,7 +11,7 @@
 
 	<properties>
 	    <version.org.keycloak>1.7.0.Final</version.org.keycloak>
-	    <version.org.jboss.teiid>8.12.5-SNAPSHOT</version.org.jboss.teiid>
+	    <version.org.jboss.teiid>8.12.5</version.org.jboss.teiid>
         <apache.httpcomponents.version>4.3.6</apache.httpcomponents.version>
         <resteasy.version>2.3.7.Final</resteasy.version>
     </properties>
@@ -57,7 +57,8 @@
     </dependencyManagement>    
     
     <modules>
-        <module>teiid-odata-oauth-keycloak</module>
+        <module>odata-oauth-keycloak</module>
+        <module>odata-saml-keycloak</module>
         <module>examples/database-service</module>
     </modules>
 
