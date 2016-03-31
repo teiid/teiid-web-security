@@ -59,6 +59,7 @@
     <modules>
         <module>odata-oauth-keycloak</module>
         <module>odata-saml-keycloak</module>
+	<module>odata-kerberos</module>
         <module>examples/database-service</module>
     </modules>
 

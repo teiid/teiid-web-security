@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<jboss-web>  
+    <security-domain>java:/jaas/MY_REALM</security-domain>  
+    <valve>  
+    <class-name>org.jboss.security.negotiation.NegotiationAuthenticator</class-name>  
+    </valve>  
+    <jacc-star-role-allow>true</jacc-star-role-allow>
+    <context-root>odata4</context-root>
+</jboss-web>
