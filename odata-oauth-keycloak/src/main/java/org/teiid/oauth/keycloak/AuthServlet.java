@@ -41,7 +41,7 @@ public class AuthServlet extends HttpServlet {
         ServletOAuthClient oAuthClient = (ServletOAuthClient) req
                 .getServletContext().getAttribute(ServletOAuthClient.class.getName());        
         if(req.getRequestURL().toString().endsWith("auth")) {
-            oAuthClient.redirectRelative("token", req, resp);
+            oAuthClient.redirectRelative("keycloak/token", req, resp);
         } else if (req.getRequestURL().toString().endsWith("token")) {
             try {
                 AccessTokenResponse token = oAuthClient.getBearerToken(req);
