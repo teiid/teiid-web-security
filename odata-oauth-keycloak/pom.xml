@@ -11,7 +11,7 @@
     <artifactId>teiid-odata-oauth-keycloak</artifactId>
     <name>Teiid OData OAuth Using Keycloak</name>
     <description>Teiid OData4 Module with OAuth Security with Keycloak</description>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <dependencies>
          <dependency>
@@ -50,7 +50,17 @@
                     <archive>
                         <manifestFile>src/main/webapp/META-INF/MANIFEST.MF</manifestFile>
                     </archive>
+                    <primaryArtifact>true</primaryArtifact>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>create-assemblies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>war</goal>
+                        </goals>
+                    </execution>
+                </executions>                
             </plugin>
         </plugins>
     </build>
